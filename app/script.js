@@ -1,4 +1,8 @@
-import * as Databse from 'better-sqlite3'
-import * as path from 'path'
+import { buildDB } from "./DBManager.js";
 
-console.log("Hi")
+const btn = document.getElementById("btn")
+
+
+btn.addEventListener('click', async function () {
+    buildDB()
+});
