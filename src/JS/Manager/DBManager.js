@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3'
 import * as path from 'path'
 
-const db_path = path.resolve("./../data/data.db")
+const db_path = path.resolve("./data/data.db")
 export const db = new Database(db_path)
 
 function checkTableBuild(name){
@@ -10,10 +10,10 @@ function checkTableBuild(name){
 };
 
 export function buildDB(){
-    createUsersTable();
+    createGamesTable();
 };
 
-function createUsersTable(){
+function createGamesTable(){
     if (!checkTableBuild("games")){
         db.exec(`
             CREATE TABLE IF NOT EXISTS games (
@@ -24,3 +24,14 @@ function createUsersTable(){
     }
         
 };
+export function getGames(){
+     try {
+        const query = `SELECT * FROM games`
+        const readQuery = db.prepare(query)
+        const rowList = readQuery.all()
+        return rowList
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
