@@ -1,18 +1,25 @@
 
 
-const btn = document.getElementById("btn")
+const btn = document.getElementById("game-grid")
 
-async function logData() {
-    const reponse = await fetch("/DB/games");
+async function getAllGames() {
+    const reponse = await fetch("/DB/games/get/all");
     const games = await reponse.json();
-    btn.textContent = games
+    return games
 }
 
+
+document.addEventListener("DOMContentLoaded", async function () {
+    
+    const games = await getAllGames();
+
+    for (const element of games) {
+        console.log(element.name)
+    }
+});
 
 
 btn.addEventListener('click', async function () {
     btn.textContent =" wasd"
     
 });
-
-logData();
