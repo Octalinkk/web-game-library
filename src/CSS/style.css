@@ -19,6 +19,33 @@ h1 {
     font-size: 100px;
 }
 
+
+header {
+    display: flex;
+    height: 50px;
+    background-color: #00000043;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    align-items: center;
+}
+
+
+header select {
+    width: 150px;
+    height: 35px;
+    font-size: 15px;
+    padding-left: 10px;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides any overflow beyond the width of the div */
+    text-overflow: ellipsis; /* Replaces the overflow text with "..." */
+    background-color: transparent;
+    border: 2px solid var(--sidebar-color-border);    
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);    
+    transition: all 0.4s ease;
+}
+
 .game-grid {
     overflow: auto;
     padding: 10px;
@@ -41,11 +68,55 @@ h1 {
     overflow: hidden;
 }
 
-.game-card .hours {
-    top: 30px;
+.game-card .game-info {    
+    position: relative; 
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+}
+
+.game-info .icon{
+    width: 50px;
+    height: 50px;
     position: relative;
-    margin: 20px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.icon img{
+    width: 50px;
+    height: 50px;
+}
+
+.game-info .switch{
+    background-color: #dc0b0b;
+}
+
+.game-info .ps{
+    background-color: #004098;
+}
+
+.game-info .steam{
+    background-color: #182640;
+}
+
+.game-info .epic{
+    background-color: #000000;
+}
+
+.game-info .wii{
+    background-color: #c2c2c2;
+}
+
+.game-info .ds{
+    background-color: #ffd9d9;
+}
+
+
+.game-card .hours {
+    position: relative;
     min-width: 30px;
+    margin: 10px;
+    width: auto;
     padding: 10px;
     border-radius: 10px;
     background-color: gray;
@@ -53,6 +124,17 @@ h1 {
     border: 3px solid #303030;
     z-index: 2;
 }
+
+.game-card .supports {
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left: auto;
+    margin-bottom: 10px;
+    z-index: 3;
+}
+
 
 .game-card img {
     position: absolute;
@@ -62,8 +144,8 @@ h1 {
     z-index: 1;
 }
 
-.game-card:hover img{
-    filter: blur(10px);
+.game-card:hover .card-bg{
+    filter: blur(5px);
 }
 
 .game-card .game-context{
@@ -75,7 +157,7 @@ h1 {
 .game-card:hover .game-context .game-rating{
     position: relative;
     z-index: 2;
-    top: 200px;
+    top: 150px;
     padding-left: 20px; 
     padding-top: 20px; 
     padding-bottom: 20px; 
@@ -86,7 +168,6 @@ h1 {
 }
 
 .game-card:hover .game-context .game-rating .rate{
-    margin-left: 20px;   
     font-size: 20px;    
 }
 
@@ -108,7 +189,7 @@ h1 {
   white-space: nowrap;      /* Optional: ensures items stay in one line */
   scroll-behavior: smooth;  /* Smooth scroll if using JS */
   font-size: 20px;    
-  top: 200px;
+  top: 170px;
   position: relative;
   z-index: 2;
   color: white;
@@ -124,14 +205,20 @@ h1 {
 }
 
 .tags-list .tag {
+    opacity: 40%;
     flex: 0 0 auto;   
-    height: 30px;
-    background-color: #00ccff;
+    height: 20px;
+    font-size: 15px;
+    background-color: #707070;
+    padding: 10px;
+    border: 3px solid #303030;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     font-weight: bold;
+    font-style: italic;
     color: white;
     animation: scroll-left 20s linear infinite;
 }
@@ -158,5 +245,15 @@ h1 {
 footer {
     height: 100px;
     background-color: black;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: wheat;
+}
+
+footer p{
+    position: relative;
+    top: 25px;
 }
 

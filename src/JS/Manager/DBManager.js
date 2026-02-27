@@ -13,6 +13,8 @@ export function buildDB(){
     createGamesTable();
     createSupportsTable();
     createTagsTable();
+    createGameSupportsTable();
+    createGameTagsTable();
 };
 
 function createGamesTable(){
@@ -34,7 +36,6 @@ function createSupportsTable(){
         db.exec(`
             CREATE TABLE IF NOT EXISTS supports (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL, 
                 icon_path TEXT NOT NULL
             )
         `);

@@ -14,7 +14,7 @@ export function getSupports(){
 
 export function getSupportsbyAlpha(){
      try {
-        const query = `SELECT * FROM supports ORDER BY name DESC`
+        const query = `SELECT * FROM supports ORDER BY name ASC`
         const readQuery = db.prepare(query)
         const rowList = readQuery.all()
         return rowList
@@ -37,16 +37,16 @@ export function getSupportsbyID(supportId) {
     }
 }
 
-export function addSupport(name, icon_path) {
+export function addSupport(icon_path) {
     try {
         let resquestInfo = null; 
         const insertQuery = db.prepare(
-            `INSERT INTO supports (name, icon_path) VALUES (?, ?)`
+            `INSERT INTO supports (icon_path) VALUES (?)`
         );
 
         // Execute the query with parameters
         const transaction = db.transaction(() => {
-            const info = insertQuery.run(name, icon_path);
+            const info = insertQuery.run(icon_path);
             resquestInfo = info;
             console.log(
                 `Inserted ${info.changes} rows with last ID ${info.lastInsertRowid} into games`

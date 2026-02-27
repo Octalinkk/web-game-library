@@ -14,7 +14,31 @@ export function getGames(){
 
 export function getGamesbyAlpha(){
      try {
-        const query = `SELECT * FROM games ORDER BY name DESC`
+        const query = `SELECT * FROM games ORDER BY name ASC`
+        const readQuery = db.prepare(query)
+        const rowList = readQuery.all()
+        return rowList
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+export function getGamesbyPlaytime(){
+     try {
+        const query = `SELECT * FROM games ORDER BY playtime DESC`
+        const readQuery = db.prepare(query)
+        const rowList = readQuery.all()
+        return rowList
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+export function getGamesbyRating(){
+     try {
+        const query = `SELECT * FROM games ORDER BY rating DESC`
         const readQuery = db.prepare(query)
         const rowList = readQuery.all()
         return rowList
