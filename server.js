@@ -12,31 +12,6 @@ const app = express();
 const PORT = 8080;
 buildDB()
 
-addTag("+18")
-addTag("Aventure")
-addTag("Beat them all")
-addTag("COOP")
-addTag("COup de coeur")
-addTag("Course")
-addTag("Dungeon Crawler")
-addTag("Factory-Game")
-addTag("FPS")
-addTag("Furry")
-addTag("Hack'n'Slash")
-addTag("Horreur")
-addTag("Metroid-Vanilla")
-addTag("Multijoureur")
-addTag("Plateformer")
-addTag("Puzzle-Based")
-addTag("Rogue-like")
-addTag("RPG")
-addTag("Simulator")
-addTag("Souls-like")
-addTag("Story-Driven")
-addTag("Survival")
-addTag("Table top")
-addTag("Tuer le temps")
-addTag("Turn-based Combat")
 
 
 app.get("/", (req, res) => {
