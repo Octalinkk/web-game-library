@@ -146,6 +146,7 @@ header select {
 
 .game-card:hover .card-bg{
     filter: blur(5px);
+    transition: all 0.2s ease;
 }
 
 .game-card .game-context{
@@ -220,25 +221,10 @@ header select {
     font-weight: bold;
     font-style: italic;
     color: white;
-    animation: scroll-left 20s linear infinite;
-}
-.tags-list:hover .tag{
-  animation-play-state: paused;
-}
-
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* Move by half the total width of the combined content */
-    transform: translateX(calc(var(--duration, -100%) - 20px)); 
-  }
 }
 
 
 .tags-list {
-  overflow-x: hidden;      /* Hide scrollbar */
   display: flex;
 }
 
@@ -257,3 +243,22 @@ footer p{
     top: 25px;
 }
 
+@media (max-width: 600px) {
+    .game-grid {
+        overflow: auto;
+        padding: 10px;
+        width: auto;
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .game-grid .game-card {
+        position: relative;
+        border-radius: 10px;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+    }
+}
