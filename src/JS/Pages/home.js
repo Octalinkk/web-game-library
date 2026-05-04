@@ -120,9 +120,16 @@ function createCard(game, supports, tags){
             }
             card += `</div>
           </div>
-          <div class="game-rating">
-            <span class="stars">${stars}</span>
-            <span class="rate"><span>${rating}</span>/10</span>
+          <div class="game-rating">`
+            if (game.playtime > 0) {
+                card += `<span class="stars">${stars}</span>
+                        <span class="rate"><span>${rating}</span>/10</span>`
+            }
+            else {
+                card += `<span class="np">Never Played</span>`
+            }
+            
+        card += `
           </div>
           <div class="tags-list">`
           for (const tag of tags) {
