@@ -1,7 +1,10 @@
 
-
+const title = document.getElementById("title")
 const grid = document.getElementById("game-grid")
 const selectFilter = document.getElementById("filter")
+
+
+
 
 async function getAllGames() {
     const reponse = await fetch("/DB/games/get/alpha");
@@ -87,7 +90,6 @@ async function displayGames(games){
         let tags = []
         for (const elem of tagsId) {
             const tag = await getTagById(elem.tag_id)
-            console.log(tag)
             tags.push(tag)
         }
         grid.innerHTML += createCard(game, supports, tags)
