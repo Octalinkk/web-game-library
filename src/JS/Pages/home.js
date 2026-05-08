@@ -1,5 +1,4 @@
 
-const title = document.getElementById("title")
 const grid = document.getElementById("game-grid")
 const selectFilter = document.getElementById("filter")
 
