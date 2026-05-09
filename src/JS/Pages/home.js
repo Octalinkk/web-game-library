@@ -1,8 +1,9 @@
 
 const grid = document.getElementById("game-grid")
 const selectFilter = document.getElementById("filter")
-
-
+const pageLinks = document.querySelectorAll('.page-link');
+var games
+var pageNum = 1
 
 
 async function getAllGames() {
@@ -50,14 +51,13 @@ async function getTagsbyGameID(game_id) {
 
 document.addEventListener("DOMContentLoaded", async function () {
     
-    const games = await getAllGames();
+    games = await getAllGames();
 
-    displayGames(games)
+    displayGames(games, 1)
 });
 
 selectFilter.addEventListener("change", async function(event) {
     const selectedId = event.target.value;
-    var games
     if (selectedId==1)
     {
         games = await getAllGames();
@@ -69,16 +69,39 @@ selectFilter.addEventListener("change", async function(event) {
         games = await getAllGamesByRating();
     } 
 
-    displayGames(games);
+    displayGames(games, 1);
     
 });
 
-async function displayGames(games){
+pageLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    // Prevent the default anchor link behavior (jumping to the top of the page)
+    e.preventDefault();
+
+    // 3. Find any currently active items and remove the 'active' class
+    const currentActiveItems = document.querySelectorAll('.page-item.active');
+    currentActiveItems.forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // 4. Find the parent 'li' of the clicked link and add the 'active' class
+    const clickedListItem = this.closest('.page-item');
+    if (clickedListItem) {
+      clickedListItem.classList.add('active');
+    }
+    pageNum = Number(this.textContent); 
+    displayGames(games, pageNum)
+  });
+});
+
+async function displayGames(games, pageNum){
 
     grid.innerHTML = ""
-
-    for (const game of games) {
-        
+    const start = (pageNum-1) * 100; 
+    const end = pageNum * 100; 
+    // TODO Faut modifier pour que si y'a moins de jeux que 100 dans la page, ça couple la limite max pour pas générer d'erreur
+    for (let i = start; i < end; i++) {
+        const game = games[i]        
         const supportsId = await getSupportsbyGameID(game.id);
         const tagsId = await getTagsbyGameID(game.id);
         let supports = []
