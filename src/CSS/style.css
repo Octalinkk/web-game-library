@@ -255,6 +255,13 @@ header select {
   display: flex;
 }
 
+.pagesNumbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
 footer {
     height: 100px;
     background-color: black;

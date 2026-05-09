@@ -52,7 +52,6 @@ async function getTagsbyGameID(game_id) {
 document.addEventListener("DOMContentLoaded", async function () {
     
     games = await getAllGames();
-
     displayGames(games, 1)
 });
 
