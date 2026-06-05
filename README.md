@@ -17,11 +17,12 @@ At the moment, there is no way, fur a common user, to add games, tags or anythin
 ### Known Bugs and Errors
 
 - You can experience some stutter while first loading the page, because of all the games loading at launch.
-- Screen Resolution for Smartphone isn't properly handled.
 
 ### Futur plans
 
-No adjustments, or new features is planned at the moment.
+- Add Icon for 100%ed games
+- Add Icon for favourites games
+- New feature I'm cooking up
 
 ## Versions
 
