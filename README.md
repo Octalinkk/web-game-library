@@ -13,6 +13,7 @@ At the moment, there is no way, fur a common user, to add games, tags or anythin
 - Displays a grid filled with all the games registered in the SQLite database. 
 - Displays the informations about the games like the playtime, rating and type of game.
 - Can display games with different orders. For exemple, by "Most played", "Best rate" or "Alphabethic order"
+- Displays lables for special tags
 
 ### Known Bugs and Errors
 

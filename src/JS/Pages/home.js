@@ -159,6 +159,15 @@ function createCard(game, supports, tags){
             card += `<span class="tag">${tag.name}</span>`
           }            
           card += `</div>
+          <div class="labels">`
+            console.log(tags)
+            if(tags.some(tag => tag.name === 'Coup de coeur')) {
+                card += `<div class="label"><img src="/icon/heart.png"></div>`
+            }
+            if(tags.some(tag => tag.name === '100%')) {
+                card += `<div class="label"><img src="/icon/completion.png"></div>`
+            }
+            card += `</div>
         </div>
       </div>`
 

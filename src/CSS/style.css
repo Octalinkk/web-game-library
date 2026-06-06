@@ -157,6 +157,35 @@ header select {
     z-index: 3;
 }
 
+.game-card .labels {
+    position: absolute; 
+    display: flex;
+    flex-direction: row;
+    bottom: 0px;
+    z-index: 2;
+}
+
+.labels .labels-list{
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    bottom: 0px;
+    z-index: 3;
+}
+
+.labels .label{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.label img{
+    width: 50px;
+    height: 50px;
+}
+
 
 .game-card img {
     position: absolute;
