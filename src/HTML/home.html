@@ -3,13 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>Game Library - Home</title>
+    <link rel="stylesheet" href="./../bootstrap-5.3.8-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./../CSS/style.css">
-  <script src="./JS/Pages/home.js" type="module"></script>
+    <script src="./../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
   <body>
 
-    <h1> Game library </h1>
+    <div class=".container-fluid p-0 banner-container">
+      <img src="/banner/main-banner.png" alt="banner" class="background-banner">
+      <div class="title">Game library</div>
+    </div>
 
     <header>
       <select name="filter" id="filter">
@@ -19,13 +23,20 @@
       </select>
     </header>
 
-    <div class="game-grid" id="game-grid">
+    <div class=".container-lg game-grid" id="game-grid"></div>
 
+    <div class="pagesNumbers">  
+      <ul class="pagination">
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>      
+      </ul>
     </div>
 
     <footer>
       <p>Copyright Octalink 2026 ©</p>
     </footer>
 
+    <!-- Added at the end to let the page load THEN load games :) --->
+    <script src="./../JS/Pages/home.js"></script>
   </body>
 </html>
