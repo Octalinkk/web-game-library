@@ -21,8 +21,6 @@ At the moment, there is no way, fur a common user, to add games, tags or anythin
 
 ### Futur plans
 
-- Add Icon for 100%ed games
-- Add Icon for favourites games
 - New feature I'm cooking up
 
 ## Versions
