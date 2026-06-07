@@ -160,7 +160,6 @@ function createCard(game, supports, tags){
           }            
           card += `</div>
           <div class="labels">`
-            console.log(tags)
             if(tags.some(tag => tag.name === 'Coup de coeur')) {
                 card += `<div class="label"><img src="/icon/heart.png"></div>`
             }

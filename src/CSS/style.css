@@ -32,10 +32,11 @@ body {
 .title {
     position: absolute;
     top: 50%;
+    padding-right: 10%;
     left: 0;
     /* This pulls the element back by half its own width and height, centering it perfectly */ 
-    text-align: center;
-    font-size: 100px;
+    text-align: right;
+    font-size: 150px;
     font-weight: bold;
     margin: 0; /* Removes Bootstrap's default h1 bottom margin */
     z-index: 2;
@@ -47,7 +48,7 @@ body {
 
 header {
     display: flex;
-    height: 50px;
+    height: 70px;
     background-color: #00000043;
     border-radius: 10px;
     color: white;
@@ -58,7 +59,7 @@ header {
 
 header select {
     width: 150px;
-    height: 35px;
+    height: 40px;
     font-size: 15px;
     padding-left: 10px;
     white-space: nowrap; /* Prevents text from wrapping to the next line */
@@ -69,6 +70,36 @@ header select {
     border-radius: 15px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);    
     transition: all 0.4s ease;
+}
+
+header .button{
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;    
+    border: 1px solid white;
+    border-radius: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    height: 40px;  
+    transition: all 0.4s ease-in;
+    margin-right: 0px;
+    margin-left: auto;
+
+    background-color: #3827b4;
+}
+
+header .button:hover {
+    transition: all 0.4s ease-out;  
+    backdrop-filter: blur(1px);
+    border: 1px solid rgb(26, 3, 42);
+    background: linear-gradient(
+        45deg,
+        rgb(21, 18, 230) 0%,
+        rgb(116, 203, 254) 100%
+    );
 }
 
 .game-grid {
@@ -307,6 +338,11 @@ footer p{
 }
 
 @media (max-width: 1000px) {
+
+    .title {
+        padding-right: 5%;
+        font-size: 80px;
+    }
 
     header {
         height: 100px;

@@ -14,8 +14,12 @@ buildDB()
 
 
 
+
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("./src/HTML/home.html"));
+});
+app.get("/whatShouldIPlay", (req, res) => {
+    res.sendFile(path.resolve("./src/HTML/wsip.html"));
 });
 
 app.get("/DB/games/get/all", (req, res) => {
