@@ -12,6 +12,18 @@ export function getGames(){
     }
 }
 
+export function getGamesID(){
+     try {
+        const query = `SELECT id FROM games`
+        const readQuery = db.prepare(query)
+        const rowList = readQuery.all()
+        return rowList.map(row => row.id);
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
 export function getGamesbyAlpha(){
      try {
         const query = `SELECT * FROM games ORDER BY name ASC`
