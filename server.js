@@ -1,6 +1,6 @@
 import express from 'express'
 import { buildDB } from "./src/JS/Manager/DBManager.js";
-import { getGames, getGamesbyAlpha, getGamesbyPlaytime, getGamesbyRating, addGame, getGamebyID } from "./src/JS/Manager/GameManager.js";
+import { getGames, getGamesbyAlpha, getGamesbyPlaytime, getGamesbyRating, addGame, addGameNScore, getGamebyID, updateScoreOfGame } from "./src/JS/Manager/GameManager.js";
 import { getSupports, getSupportsbyAlpha, addSupport, getSupportsbyID } from "./src/JS/Manager/SupportsManager.js";
 import { getTags, getTagssbyAlpha, addTag, getTagsbyID } from "./src/JS/Manager/TagManager.js";
 import { getGamesbySupportId, getSupportbyGameId, addGameSupport } from "./src/JS/Manager/GameSupportsManager.js";
@@ -11,7 +11,6 @@ import * as path from 'path'
 const app = express();
 const PORT = 8080;
 buildDB()
-
 
 
 

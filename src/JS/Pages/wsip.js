@@ -1,0 +1,7 @@
+const grid = document.getElementById("lockin_scr")
+const grid = document.getElementById("duration_scr")
+const grid = document.getElementById("story_scr")
+const grid = document.getElementById("release_scr")
+const grid = document.getElementById("straight_scr")
+const grid = document.getElementById("complex_scr")
+const grid = document.getElementById("player_scr")
