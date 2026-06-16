@@ -1,4 +1,6 @@
-
+.hidden {
+    display: none;
+}
 
 :root {    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -49,6 +51,10 @@ body {
     padding: 30px;
     margin-left: 20%;
     margin-right: 20%;
+}
+
+.form h2{
+    color: white;
 }
 
 .form .field{
@@ -102,6 +108,27 @@ body {
     margin-right: 0px;
     margin-left: auto;
 }
+
+
+
+.result {
+    color: #fff;
+    min-height: 400px;
+}
+
+.result #loader{
+    padding: 50px;
+    text-align: center;
+}
+
+.result #loading{
+    margin: 50px;
+    font-size: 50px;
+    font-style: italic;
+}
+
+
+
 
 
 footer {
