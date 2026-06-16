@@ -47,6 +47,66 @@ body {
     text-shadow: 3px 3px 3px #dadada;
 }
 
+header {
+    display: flex;
+    height: 70px;
+    background-color: #00000043;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    align-items: center;
+}
+
+
+header select {
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides any overflow beyond the width of the div */
+    text-overflow: ellipsis; /* Replaces the overflow text with "..." */
+    background-color: transparent;
+    border: 2px solid var(--sidebar-color-border);    
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);    
+    transition: all 0.4s ease;
+}
+
+header .button{
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;    
+    border: 1px solid white;
+    border-radius: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    height: 40px;  
+    transition: all 0.4s ease-in;
+    margin-right: 0px;
+    margin-left: auto;
+
+    background-color: #3827b4;
+}
+
+header .button:hover {
+    transition: all 0.4s ease-out;  
+    backdrop-filter: blur(1px);
+    border: 1px solid rgb(26, 3, 42);
+    background: linear-gradient(
+        45deg,
+        rgb(21, 18, 230) 0%,
+        rgb(116, 203, 254) 100%
+    );
+}
+
+
+
+
+
 .form {
     padding: 30px;
     margin-left: 20%;
@@ -57,7 +117,7 @@ body {
     color: white;
 }
 
-.form .field{
+.field{
     width: 100%;
     border-radius: 30px;
     background-color: #dadada;
@@ -66,7 +126,7 @@ body {
     margin: 30px 0px;
 }
 
-.form #calc{
+.field button{
     line-height: 1;
     display: flex;
     align-items: center;
@@ -83,7 +143,7 @@ body {
     background-color: #3827b4;
 }
 
-.form #calc:hover {
+.field button:hover {
     transition: all 0.4s ease-out;  
     backdrop-filter: blur(1px);
     border: 1px solid rgb(26, 3, 42);
@@ -111,14 +171,29 @@ body {
 
 
 
+
+
+
+
+
+
+
 .result {
     color: #fff;
     min-height: 400px;
+    padding: 30px;
 }
 
 .result #loader{
     padding: 50px;
     text-align: center;
+}
+
+.result #title{
+    font-size: 50px;
+    margin: 50px;
+    text-align: center;
+
 }
 
 .result #loading{
@@ -127,7 +202,218 @@ body {
     font-style: italic;
 }
 
+.game-grid {
+    overflow: auto;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 5px;
+    justify-content: center;
+}
 
+
+
+.game-grid .game-card {
+    position: relative;
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.game-card .game-info {    
+    position: relative; 
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+}
+
+.game-info .icon{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.icon img{
+    width: 50px;
+    height: 50px;
+}
+
+.game-info .switch{
+    background-color: #dc0b0b;
+}
+
+.game-info .ps{
+    background-color: #004098;
+}
+
+.game-info .steam{
+    background-color: #182640;
+}
+
+.game-info .epic{
+    background-color: #000000;
+}
+
+.game-info .wii{
+    background-color: #c2c2c2;
+}
+
+.game-info .ds{
+    background-color: #ffd9d9;
+}
+
+
+.game-card .hours {
+    position: relative;
+    min-width: 30px;
+    margin: 10px;
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: gray;
+    opacity: 85%;
+    border: 3px solid #303030;
+    z-index: 2;
+}
+
+.game-card .supports {
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left: auto;
+    margin-bottom: 10px;
+    z-index: 3;
+}
+
+.game-card .labels {
+    position: absolute; 
+    display: flex;
+    flex-direction: row;
+    bottom: 0px;
+    z-index: 2;
+}
+
+.labels .labels-list{
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    bottom: 0px;
+    z-index: 3;
+}
+
+.labels .label{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.label img{
+    width: 50px;
+    height: 50px;
+}
+
+
+.game-card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* recouvre sans déformer */
+    z-index: 1;
+}
+
+.game-card:hover .card-bg{
+    filter: blur(5px);
+    transition: all 0.2s ease;
+}
+
+.game-card .game-context{
+    position: none;
+    z-index: 2;
+    color: white;
+}
+
+.game-card:hover .game-context .game-rating{
+    position: relative;
+    z-index: 2;
+    top: 150px;
+    padding-left: 20px; 
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    font-size: 20px;   
+    color: white;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #5a5a5a5c;  
+}
+
+.game-card:hover .game-context .game-rating .rate{
+    font-size: 20px;    
+}
+
+
+.game-card:hover .game-context .game-rating .stars{
+    color: yellow;
+    font-size: 35px;    
+}
+
+.game-card:hover .game-context .game-rating .rate span{
+    font-size: 35px;    
+}
+
+.game-card:hover .game-context .game-rating .np{
+    font-size: 40px;    
+    justify-content: center;
+}
+
+.game-card:hover .game-context .tags-list {
+  display: flex;            /* Arrange children inline */
+  overflow-x: auto;         /* Enable horizontal scrolling */
+  gap: 10px;                /* Space between items */
+  padding: 10px;
+  white-space: nowrap;      /* Optional: ensures items stay in one line */
+  scroll-behavior: smooth;  /* Smooth scroll if using JS */
+  font-size: 20px;    
+  top: 170px;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.tags-list::-webkit-scrollbar {
+  height: 8px;              /* Customize scrollbar height */
+}
+
+.tags-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.tags-list .tag {
+    opacity: 40%;
+    flex: 0 0 auto;   
+    height: 20px;
+    font-size: 15px;
+    background-color: #707070;
+    padding: 10px;
+    border: 3px solid #303030;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+}
+
+
+.tags-list {
+  display: flex;
+}
 
 
 
