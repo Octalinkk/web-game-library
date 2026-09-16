@@ -44,6 +44,7 @@ function addScoreToGameTable(){
     //New<->Recent
     //Side-Content Obligatoire<-> B-Line
     //Gameplay Complexity
+    //Solo<->Multi
     const columns = [
         "lockin_scr", "duration_scr", "story_scr",
         "release_scr", "straight_scr", "complex_scr", "player_scr"

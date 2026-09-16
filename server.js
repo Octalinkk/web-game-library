@@ -13,7 +13,6 @@ const PORT = 8080;
 buildDB()
 
 
-
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("./src/HTML/home.html"));
 });

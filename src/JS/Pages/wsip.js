@@ -15,6 +15,7 @@ const title = document.getElementById("title")
 const formDiv = document.getElementById("form")
 const resDiv = document.getElementById("result")
 const grid = document.getElementById("game-grid")
+const btnAgain = document.getElementById("again")
 
 async function getAllGamesID() {
     const reponse = await fetch("/DB/games/get/all/ID");
@@ -195,6 +196,11 @@ btnCalc.addEventListener("click", async function(event) {
     displayGames(chosen_games);
 });
 
+btnAgain.addEventListener("click", async function(event) {
+    grid.innerHTML = ""
+    resDiv.classList.add("hidden");
+    formDiv.classList.remove("hidden");
+});
 
 function concatArray(arr1, arr2) {
     for (const item of arr2) {
