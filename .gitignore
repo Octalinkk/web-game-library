@@ -421,3 +421,5 @@ FodyWeavers.xsd
 # Project specific
 /data
 *.db
+
+/res/poster/*

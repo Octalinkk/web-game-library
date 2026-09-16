@@ -12,6 +12,18 @@ export function getGames(){
     }
 }
 
+export function getGamesID(){
+     try {
+        const query = `SELECT id FROM games`
+        const readQuery = db.prepare(query)
+        const rowList = readQuery.all()
+        return rowList.map(row => row.id);
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
 export function getGamesbyAlpha(){
      try {
         const query = `SELECT * FROM games ORDER BY name ASC`
@@ -78,6 +90,57 @@ export function addGame(name, img_path, playtime, rating) {
         });
         transaction();
         return resquestInfo;
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+export function addGameNScore(name, img_path, playtime, rating, 
+    lockin_scr, duration_scr, story_scr, release_scr, straight_scr, complex_scr, player_scr) {
+    try {
+        let resquestInfo = null; 
+        const insertQuery = db.prepare(
+            `INSERT INTO games (name, img_path, playtime, rating, lockin_scr, duration_scr, story_scr, release_scr, straight_scr, complex_scr, player_scr) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        );
+
+        // Execute the query with parameters
+        const transaction = db.transaction(() => {
+            const info = insertQuery.run(name, img_path, playtime, rating, lockin_scr, duration_scr, story_scr, release_scr, straight_scr, complex_scr, player_scr);
+            resquestInfo = info;
+            console.log(
+                `Inserted ${info.changes} rows with last ID ${info.lastInsertRowid} into games`
+            );
+        });
+        transaction();
+        return resquestInfo;
+    } catch (err) {
+        console.error(err)
+        throw err
+    }
+}
+
+export function updateScoreOfGame(game_id, lockin_scr, duration_scr, story_scr, release_scr, straight_scr, complex_scr, player_scr) {
+    try {
+        const updateQuery = db.prepare(
+            `UPDATE games SET lockin_scr = ?, 
+            duration_scr = ?, 
+            story_scr = ?, 
+            release_scr = ?, 
+            straight_scr = ?, 
+            complex_scr = ?, 
+            player_scr = ? 
+            WHERE id = ?`
+        );
+
+        // Execute the query with parameters
+        const transaction = db.transaction(() => {
+            const info = updateQuery.run(lockin_scr, duration_scr, story_scr, release_scr, straight_scr, complex_scr, player_scr, game_id);
+            console.log(
+                `Updated ${info.changes} rows with last ID ${info.lastInsertRowid} into games`
+            );
+        });
+        transaction();
     } catch (err) {
         console.error(err)
         throw err

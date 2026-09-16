@@ -1,6 +1,6 @@
 import express from 'express'
 import { buildDB } from "./src/JS/Manager/DBManager.js";
-import { getGames, getGamesbyAlpha, getGamesbyPlaytime, getGamesbyRating, addGame, getGamebyID } from "./src/JS/Manager/GameManager.js";
+import { getGames, getGamesID, getGamesbyAlpha, getGamesbyPlaytime, getGamesbyRating, addGame, addGameNScore, getGamebyID, updateScoreOfGame } from "./src/JS/Manager/GameManager.js";
 import { getSupports, getSupportsbyAlpha, addSupport, getSupportsbyID } from "./src/JS/Manager/SupportsManager.js";
 import { getTags, getTagssbyAlpha, addTag, getTagsbyID } from "./src/JS/Manager/TagManager.js";
 import { getGamesbySupportId, getSupportbyGameId, addGameSupport } from "./src/JS/Manager/GameSupportsManager.js";
@@ -13,13 +13,20 @@ const PORT = 8080;
 buildDB()
 
 
-
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("./src/HTML/home.html"));
+});
+app.get("/whatShouldIPlay", (req, res) => {
+    res.sendFile(path.resolve("./src/HTML/wsip.html"));
 });
 
 app.get("/DB/games/get/all", (req, res) => {
     const games = getGames(); 
+    res.json(games);
+});
+
+app.get("/DB/games/get/all/ID", (req, res) => {
+    const games = getGamesID(); 
     res.json(games);
 });
 

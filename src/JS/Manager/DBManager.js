@@ -11,11 +11,14 @@ function checkTableBuild(name){
 
 export function buildDB(){
     createGamesTable();
+    addScoreToGameTable();
     createSupportsTable();
     createTagsTable();
     createGameSupportsTable();
     createGameTagsTable();
 };
+
+
 
 function createGamesTable(){
     if (!checkTableBuild("games")){
@@ -29,6 +32,29 @@ function createGamesTable(){
             )
         `);
     }        
+};
+
+
+function addScoreToGameTable(){
+    const existing = db.prepare("PRAGMA table_info(games)").all().map(col => col.name);
+
+    //Chill<->Tryhard
+    //Short<->Long
+    //Story-Based<->Gameplay-Based
+    //New<->Recent
+    //Side-Content Obligatoire<-> B-Line
+    //Gameplay Complexity
+    //Solo<->Multi
+    const columns = [
+        "lockin_scr", "duration_scr", "story_scr",
+        "release_scr", "straight_scr", "complex_scr", "player_scr"
+    ];
+
+    for (const col of columns) {
+        if (!existing.includes(col)) {
+            db.exec(`ALTER TABLE games ADD COLUMN ${col} INTEGER`);
+        }
+    }
 };
 
 function createSupportsTable(){
